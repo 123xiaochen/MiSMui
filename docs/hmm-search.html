@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 HMM Search | MiSMui—Documentation</title>
+  <meta name="description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 HMM Search | MiSMui—Documentation" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 HMM Search | MiSMui—Documentation" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  
+
+<meta name="author" content="Tao Chen" />
+
+
+<meta name="date" content="2024-02-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="hmm-build.html"/>
+<link rel="next" href="blast-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#background"><i class="fa fa-check"></i><b>1.1</b> Background</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about"><i class="fa fa-check"></i><b>1.2</b> About</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#relate-tools"><i class="fa fa-check"></i><b>1.2.1</b> Relate Tools</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#relete-database"><i class="fa fa-check"></i><b>1.2.2</b> Relete Database</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hmm-build.html"><a href="hmm-build.html"><i class="fa fa-check"></i><b>2</b> HMM Build</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hmm-build.html"><a href="hmm-build.html#hmm-model-introduction"><i class="fa fa-check"></i><b>2.1</b> HMM Model Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="hmm-build.html"><a href="hmm-build.html#hmm-model-build"><i class="fa fa-check"></i><b>2.2</b> HMM Model Build</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="hmm-build.html"><a href="hmm-build.html#local-protein-file-analysis"><i class="fa fa-check"></i><b>2.2.1</b> Local Protein File Analysis</a></li>
+<li class="chapter" data-level="2.2.2" data-path="hmm-build.html"><a href="hmm-build.html#local-hmm-model-analysis"><i class="fa fa-check"></i><b>2.2.2</b> Local HMM Model Analysis</a></li>
+<li class="chapter" data-level="2.2.3" data-path="hmm-build.html"><a href="hmm-build.html#public-database"><i class="fa fa-check"></i><b>2.2.3</b> Public Database</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hmm-search.html"><a href="hmm-search.html"><i class="fa fa-check"></i><b>3</b> HMM Search</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="hmm-search.html"><a href="hmm-search.html#hmm-search-basic-analyis"><i class="fa fa-check"></i><b>3.1</b> HMM Search Basic Analyis</a></li>
+<li class="chapter" data-level="3.2" data-path="hmm-search.html"><a href="hmm-search.html#hmm-search-expanded-analysis"><i class="fa fa-check"></i><b>3.2</b> HMM Search Expanded analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="blast-1.html"><a href="blast-1.html"><i class="fa fa-check"></i><b>4</b> Blast</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="blast-1.html"><a href="blast-1.html#blast-introduction"><i class="fa fa-check"></i><b>4.1</b> Blast Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="blast-1.html"><a href="blast-1.html#blast-2"><i class="fa fa-check"></i><b>4.2</b> Blast</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="blast-1.html"><a href="blast-1.html#blast-input"><i class="fa fa-check"></i><b>4.2.1</b> Blast Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="blast-1.html"><a href="blast-1.html#blast-hmm-search-sequences-analysis"><i class="fa fa-check"></i><b>4.2.2</b> Blast-HMM Search Sequences Analysis</a></li>
+<li class="chapter" data-level="4.2.3" data-path="blast-1.html"><a href="blast-1.html#blast-local-sequences-analysis"><i class="fa fa-check"></i><b>4.2.3</b> Blast-Local Sequences Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html"><i class="fa fa-check"></i><b>5</b> Phylogenetic Tree</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#analysis"><i class="fa fa-check"></i><b>5.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#local-fasta-data-analysis"><i class="fa fa-check"></i><b>5.2.1</b> Local Fasta Data Analysis</a></li>
+<li class="chapter" data-level="5.2.2" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#local-tree-data-analysis"><i class="fa fa-check"></i><b>5.2.2</b> Local Tree Data Analysis</a></li>
+<li class="chapter" data-level="5.2.3" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#hmm-search-filter-data-analysis"><i class="fa fa-check"></i><b>5.2.3</b> HMM Search Filter Data Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="antismash-1.html"><a href="antismash-1.html"><i class="fa fa-check"></i><b>6</b> Antismash</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="antismash-1.html"><a href="antismash-1.html#antismash-introduction"><i class="fa fa-check"></i><b>6.1</b> Antismash Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="antismash-1.html"><a href="antismash-1.html#antismash-analysis"><i class="fa fa-check"></i><b>6.2</b> Antismash Analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="antismash-1.html"><a href="antismash-1.html#mism-database"><i class="fa fa-check"></i><b>6.2.1</b> MiSM Database</a></li>
+<li class="chapter" data-level="6.2.2" data-path="antismash-1.html"><a href="antismash-1.html#personal-data-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Personal Data Analysis</a></li>
+<li class="chapter" data-level="6.2.3" data-path="antismash-1.html"><a href="antismash-1.html#ncbi-accession-id"><i class="fa fa-check"></i><b>6.2.3</b> NCBI Accession ID</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html"><i class="fa fa-check"></i><b>7</b> Lab Bacteria Map</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html#introduction-2"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html#analysis-1"><i class="fa fa-check"></i><b>7.2</b> Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MiSMui—Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hmm-search" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> HMM Search<a href="hmm-search.html#hmm-search" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>After completing the analysis of the HMM Build module, click <strong>‘HMM Search’</strong> in the MiSMui navigation bar to enter the HMM Search module, which can retrieve the data in the entire database of MiSMui based on the built HMM model, so as to obtain sequence information similar to the model protein.</p>
+<p>See Figure <a href="hmm-search.html#fig:2-1">3.1</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:2-1"></span>
+<img src="figure/HMM_Search_main.jpg" alt="HMM Search main Pannel" width="100%" />
+<p class="caption">
+Figure 3.1: HMM Search main Pannel
+</p>
+</div>
+<div id="hmm-search-basic-analyis" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> HMM Search Basic Analyis<a href="hmm-search.html#hmm-search-basic-analyis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First of all, select the data to be selected in the <strong>MiSM database</strong>. Users can select the data of interest according to the <strong>‘Select HMM Module Type’</strong> button. This knob supports the selection of multiple data at the same time. See Figure <a href="hmm-search.html#fig:2-2">3.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:2-2"></span>
+<img src="figure/HMM_Search_1.jpg" alt="HMM Search Database Type" width="60%" />
+<p class="caption">
+Figure 3.2: HMM Search Database Type
+</p>
+</div>
+<p>After selecting the data, the user needs to set the Search threshold. The user can set <strong>E-value</strong> and <strong>Score</strong> to filter the search results according to their own needs.Then click the <strong>‘HMM Search’</strong> button for analysis, and the analysis results will be displayed in <strong>‘Data Display’</strong> on the right.
+Users can click the <strong>‘NAS_PATH’</strong> column in the result to enter the Antismash analysis result page of the corresponding protein in the MiSM database. See Figure <a href="hmm-search.html#fig:2-3">3.3</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:2-3"></span>
+<img src="figure/HMM_Search_2.jpg" alt="HMM Search Database Type" width="100%" />
+<p class="caption">
+Figure 3.3: HMM Search Database Type
+</p>
+</div>
+</div>
+<div id="hmm-search-expanded-analysis" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> HMM Search Expanded analysis<a href="hmm-search.html#hmm-search-expanded-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In addition to providing basic retrieval functions, MiSMui also provides extended filtering functions. Users can customize their projects based on ‘product’, ‘monomer_pairings’, ‘aSDomain’ and other information to obtain more accurate similar protein sequences.(Figure <a href="hmm-search.html#fig:2-4">3.4</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:2-4"></span>
+<img src="figure/HMM_Search_3.jpg" alt="HMM Search Database Type" width="60%" />
+<p class="caption">
+Figure 3.4: HMM Search Database Type
+</p>
+</div>
+<p>After completing the filtering setting of the data (Figure <a href="hmm-search.html#fig:2-4">3.4</a>), click the ‘Module Filter’ button to filter the HMM Search results. The results are displayed in the ‘Data Filter Display’ section. Users can also enter the MiSM database through the NAS_PATH column to view the Antismash results corresponding to the protein.(Figure <a href="hmm-search.html#fig:2-5">3.5</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:2-5"></span>
+<img src="figure/HMM_Search_4.jpg" alt="HMM Search Database Type" width="100%" />
+<p class="caption">
+Figure 3.5: HMM Search Database Type
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hmm-build.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="blast-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-HMMSearch.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

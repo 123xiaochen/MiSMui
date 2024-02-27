@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 HMM Build | MiSMui—Documentation</title>
+  <meta name="description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 HMM Build | MiSMui—Documentation" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 HMM Build | MiSMui—Documentation" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  
+
+<meta name="author" content="Tao Chen" />
+
+
+<meta name="date" content="2024-02-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="hmm-search.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#background"><i class="fa fa-check"></i><b>1.1</b> Background</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about"><i class="fa fa-check"></i><b>1.2</b> About</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#relate-tools"><i class="fa fa-check"></i><b>1.2.1</b> Relate Tools</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#relete-database"><i class="fa fa-check"></i><b>1.2.2</b> Relete Database</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hmm-build.html"><a href="hmm-build.html"><i class="fa fa-check"></i><b>2</b> HMM Build</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hmm-build.html"><a href="hmm-build.html#hmm-model-introduction"><i class="fa fa-check"></i><b>2.1</b> HMM Model Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="hmm-build.html"><a href="hmm-build.html#hmm-model-build"><i class="fa fa-check"></i><b>2.2</b> HMM Model Build</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="hmm-build.html"><a href="hmm-build.html#local-protein-file-analysis"><i class="fa fa-check"></i><b>2.2.1</b> Local Protein File Analysis</a></li>
+<li class="chapter" data-level="2.2.2" data-path="hmm-build.html"><a href="hmm-build.html#local-hmm-model-analysis"><i class="fa fa-check"></i><b>2.2.2</b> Local HMM Model Analysis</a></li>
+<li class="chapter" data-level="2.2.3" data-path="hmm-build.html"><a href="hmm-build.html#public-database"><i class="fa fa-check"></i><b>2.2.3</b> Public Database</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hmm-search.html"><a href="hmm-search.html"><i class="fa fa-check"></i><b>3</b> HMM Search</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="hmm-search.html"><a href="hmm-search.html#hmm-search-basic-analyis"><i class="fa fa-check"></i><b>3.1</b> HMM Search Basic Analyis</a></li>
+<li class="chapter" data-level="3.2" data-path="hmm-search.html"><a href="hmm-search.html#hmm-search-expanded-analysis"><i class="fa fa-check"></i><b>3.2</b> HMM Search Expanded analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="blast-1.html"><a href="blast-1.html"><i class="fa fa-check"></i><b>4</b> Blast</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="blast-1.html"><a href="blast-1.html#blast-introduction"><i class="fa fa-check"></i><b>4.1</b> Blast Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="blast-1.html"><a href="blast-1.html#blast-2"><i class="fa fa-check"></i><b>4.2</b> Blast</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="blast-1.html"><a href="blast-1.html#blast-input"><i class="fa fa-check"></i><b>4.2.1</b> Blast Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="blast-1.html"><a href="blast-1.html#blast-hmm-search-sequences-analysis"><i class="fa fa-check"></i><b>4.2.2</b> Blast-HMM Search Sequences Analysis</a></li>
+<li class="chapter" data-level="4.2.3" data-path="blast-1.html"><a href="blast-1.html#blast-local-sequences-analysis"><i class="fa fa-check"></i><b>4.2.3</b> Blast-Local Sequences Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html"><i class="fa fa-check"></i><b>5</b> Phylogenetic Tree</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#analysis"><i class="fa fa-check"></i><b>5.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#local-fasta-data-analysis"><i class="fa fa-check"></i><b>5.2.1</b> Local Fasta Data Analysis</a></li>
+<li class="chapter" data-level="5.2.2" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#local-tree-data-analysis"><i class="fa fa-check"></i><b>5.2.2</b> Local Tree Data Analysis</a></li>
+<li class="chapter" data-level="5.2.3" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#hmm-search-filter-data-analysis"><i class="fa fa-check"></i><b>5.2.3</b> HMM Search Filter Data Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="antismash-1.html"><a href="antismash-1.html"><i class="fa fa-check"></i><b>6</b> Antismash</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="antismash-1.html"><a href="antismash-1.html#antismash-introduction"><i class="fa fa-check"></i><b>6.1</b> Antismash Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="antismash-1.html"><a href="antismash-1.html#antismash-analysis"><i class="fa fa-check"></i><b>6.2</b> Antismash Analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="antismash-1.html"><a href="antismash-1.html#mism-database"><i class="fa fa-check"></i><b>6.2.1</b> MiSM Database</a></li>
+<li class="chapter" data-level="6.2.2" data-path="antismash-1.html"><a href="antismash-1.html#personal-data-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Personal Data Analysis</a></li>
+<li class="chapter" data-level="6.2.3" data-path="antismash-1.html"><a href="antismash-1.html#ncbi-accession-id"><i class="fa fa-check"></i><b>6.2.3</b> NCBI Accession ID</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html"><i class="fa fa-check"></i><b>7</b> Lab Bacteria Map</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html#introduction-2"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html#analysis-1"><i class="fa fa-check"></i><b>7.2</b> Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MiSMui—Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hmm-build" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> HMM Build<a href="hmm-build.html#hmm-build" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="figure/HMM_Build_main.jpg" alt="HMM Build Main Pannel" width="100%" />
+<p class="caption">
+Figure 2.1: HMM Build Main Pannel
+</p>
+</div>
+<div id="hmm-model-introduction" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> HMM Model Introduction<a href="hmm-build.html#hmm-model-introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Hidden Markov model (HMM)</strong> is a probability graph model for sequence labeling, which describes the process that a hidden Markov chain generates an unobservable state sequence, and then generates an observation sequence from each state. In short, a hidden Markov model is generated after machine learning in the algorithm through the known homologous gene sequence, and then we can use this model to predict whether there is such a homologous sequence in the database.</p>
+</div>
+<div id="hmm-model-build" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> HMM Model Build<a href="hmm-build.html#hmm-model-build" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>MiSMui supports the analysis of three types of data: 1. Build the HMM model using the local fasta file, 2. Use the HMM model already built locally, and 3. Load the HMM model from the public database.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="figure/HMM_Build_type.jpeg" alt="HMM Build type" width="60%" />
+<p class="caption">
+Figure 2.2: HMM Build type
+</p>
+</div>
+<p>After selecting the completed model construction algorithm, the local data is uploaded, and then the user can build the model through the ‘HMM Build’ button.</p>
+<div id="local-protein-file-analysis" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Local Protein File Analysis<a href="hmm-build.html#local-protein-file-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After selecting and analyzing the local protein sequence, users can choose HMM Build algorithm. MiSMui provides Auto, L-INS-I, G-INS-I and E-INS-I algorithms to choose from. Generally, choosing Auto can meet the needs of most people.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figure/HMM_Build_1.1.jpeg" alt="HMM Build algorithm" width="60%" />
+<p class="caption">
+Figure 2.3: HMM Build algorithm
+</p>
+</div>
+<p>After selecting the model construction algorithm, upload the local data. The uploaded data will be displayed in the ‘Fasta Data Display’ module, and then the user can build the model through the ‘HMM Build’ button. After completing the construction of the model, it will be displayed in the ‘HMM Data Display’ module. At the same time, MiSMui provides the download of the model, and users can use the download button in the upper right corner to download.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="figure/HMM_Build_1.2.jpeg" alt="HMM Build output Pannel" width="100%" />
+<p class="caption">
+Figure 2.4: HMM Build output Pannel
+</p>
+</div>
+</div>
+<div id="local-hmm-model-analysis" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Local HMM Model Analysis<a href="hmm-build.html#local-hmm-model-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition to local protein sequence modeling, MiSMui also supports the built local HMM model, and then users can upload the model through the ‘HMM Build’ button. It will be shown in the ‘HMM Data Display’ module after the upload is completed.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="figure/HMM_Build_2.jpg" alt="HMM Build Local Model" width="100%" />
+<p class="caption">
+Figure 2.5: HMM Build Local Model
+</p>
+</div>
+</div>
+<div id="public-database" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Public Database<a href="hmm-build.html#public-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>MiSMui also provides an analysis of the HMM model in the public database, and this part of the function is still under construction…
+Therefore, we recommend downloading the HMM model of interest from the public database (such as <em>InterPro</em> <a href="https://www.ebi.ac.uk/interpro/" class="uri">https://www.ebi.ac.uk/interpro/</a> ) and then uploading the HMM model locally for analysis.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hmm-search.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-HMMBuild.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

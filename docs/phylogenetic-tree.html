@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Phylogenetic Tree | MiSMui—Documentation</title>
+  <meta name="description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Phylogenetic Tree | MiSMui—Documentation" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Phylogenetic Tree | MiSMui—Documentation" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the MiSMui Software package to write a book." />
+  
+
+<meta name="author" content="Tao Chen" />
+
+
+<meta name="date" content="2024-02-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="blast-1.html"/>
+<link rel="next" href="antismash-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#background"><i class="fa fa-check"></i><b>1.1</b> Background</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about"><i class="fa fa-check"></i><b>1.2</b> About</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#relate-tools"><i class="fa fa-check"></i><b>1.2.1</b> Relate Tools</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#relete-database"><i class="fa fa-check"></i><b>1.2.2</b> Relete Database</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hmm-build.html"><a href="hmm-build.html"><i class="fa fa-check"></i><b>2</b> HMM Build</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hmm-build.html"><a href="hmm-build.html#hmm-model-introduction"><i class="fa fa-check"></i><b>2.1</b> HMM Model Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="hmm-build.html"><a href="hmm-build.html#hmm-model-build"><i class="fa fa-check"></i><b>2.2</b> HMM Model Build</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="hmm-build.html"><a href="hmm-build.html#local-protein-file-analysis"><i class="fa fa-check"></i><b>2.2.1</b> Local Protein File Analysis</a></li>
+<li class="chapter" data-level="2.2.2" data-path="hmm-build.html"><a href="hmm-build.html#local-hmm-model-analysis"><i class="fa fa-check"></i><b>2.2.2</b> Local HMM Model Analysis</a></li>
+<li class="chapter" data-level="2.2.3" data-path="hmm-build.html"><a href="hmm-build.html#public-database"><i class="fa fa-check"></i><b>2.2.3</b> Public Database</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hmm-search.html"><a href="hmm-search.html"><i class="fa fa-check"></i><b>3</b> HMM Search</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="hmm-search.html"><a href="hmm-search.html#hmm-search-basic-analyis"><i class="fa fa-check"></i><b>3.1</b> HMM Search Basic Analyis</a></li>
+<li class="chapter" data-level="3.2" data-path="hmm-search.html"><a href="hmm-search.html#hmm-search-expanded-analysis"><i class="fa fa-check"></i><b>3.2</b> HMM Search Expanded analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="blast-1.html"><a href="blast-1.html"><i class="fa fa-check"></i><b>4</b> Blast</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="blast-1.html"><a href="blast-1.html#blast-introduction"><i class="fa fa-check"></i><b>4.1</b> Blast Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="blast-1.html"><a href="blast-1.html#blast-2"><i class="fa fa-check"></i><b>4.2</b> Blast</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="blast-1.html"><a href="blast-1.html#blast-input"><i class="fa fa-check"></i><b>4.2.1</b> Blast Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="blast-1.html"><a href="blast-1.html#blast-hmm-search-sequences-analysis"><i class="fa fa-check"></i><b>4.2.2</b> Blast-HMM Search Sequences Analysis</a></li>
+<li class="chapter" data-level="4.2.3" data-path="blast-1.html"><a href="blast-1.html#blast-local-sequences-analysis"><i class="fa fa-check"></i><b>4.2.3</b> Blast-Local Sequences Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html"><i class="fa fa-check"></i><b>5</b> Phylogenetic Tree</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#analysis"><i class="fa fa-check"></i><b>5.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#local-fasta-data-analysis"><i class="fa fa-check"></i><b>5.2.1</b> Local Fasta Data Analysis</a></li>
+<li class="chapter" data-level="5.2.2" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#local-tree-data-analysis"><i class="fa fa-check"></i><b>5.2.2</b> Local Tree Data Analysis</a></li>
+<li class="chapter" data-level="5.2.3" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#hmm-search-filter-data-analysis"><i class="fa fa-check"></i><b>5.2.3</b> HMM Search Filter Data Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="antismash-1.html"><a href="antismash-1.html"><i class="fa fa-check"></i><b>6</b> Antismash</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="antismash-1.html"><a href="antismash-1.html#antismash-introduction"><i class="fa fa-check"></i><b>6.1</b> Antismash Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="antismash-1.html"><a href="antismash-1.html#antismash-analysis"><i class="fa fa-check"></i><b>6.2</b> Antismash Analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="antismash-1.html"><a href="antismash-1.html#mism-database"><i class="fa fa-check"></i><b>6.2.1</b> MiSM Database</a></li>
+<li class="chapter" data-level="6.2.2" data-path="antismash-1.html"><a href="antismash-1.html#personal-data-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Personal Data Analysis</a></li>
+<li class="chapter" data-level="6.2.3" data-path="antismash-1.html"><a href="antismash-1.html#ncbi-accession-id"><i class="fa fa-check"></i><b>6.2.3</b> NCBI Accession ID</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html"><i class="fa fa-check"></i><b>7</b> Lab Bacteria Map</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html#introduction-2"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="lab-bacteria-map.html"><a href="lab-bacteria-map.html#analysis-1"><i class="fa fa-check"></i><b>7.2</b> Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MiSMui—Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="phylogenetic-tree" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Phylogenetic Tree<a href="phylogenetic-tree.html#phylogenetic-tree" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction<a href="phylogenetic-tree.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The systematic tree, also known as the evolutionary tree, is a tree that indicates the evolutionary relationship between species believed to have a common ancestor. It is a kind of family branch classification method. In the tree, each node represents the nearest common ancestor of its branches, and the length of the line segment between the nodes corresponds to the evolutionary distance.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-1"></span>
+<img src="figure/Phyligenetic_main.jpg" alt="Phylogenetic main Pannel" width="100%" />
+<p class="caption">
+Figure 5.1: Phylogenetic main Pannel
+</p>
+</div>
+</div>
+<div id="analysis" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Analysis<a href="phylogenetic-tree.html#analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>MiSMui provides analysis of three sequence data, including <strong>local Fasta Data Analysis</strong>, <strong>local Tree Data Analysis</strong> and <strong>HMM Search Filter Data analysis</strong> (<strong>under construction</strong>). Users can analyze according to their own choices.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-2"></span>
+<img src="figure/Phyligenetic_1.jpg" alt="Phylogenetic Analysis Type" width="50%" />
+<p class="caption">
+Figure 5.2: Phylogenetic Analysis Type
+</p>
+</div>
+<div id="local-fasta-data-analysis" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Local Fasta Data Analysis<a href="phylogenetic-tree.html#local-fasta-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Local sequence analysis is divided into two steps, firstly, data analysis, comparison according to the uploaded data, tree analysis, and then visual display of fruit results.</p>
+<div id="data-analysis" class="section level4 hasAnchor" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Data Analysis<a href="phylogenetic-tree.html#data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-3"></span>
+<img src="figure/Phyligenetic_analysis.jpg" alt="Phylogenetic Analysis Step" width="100%" />
+<p class="caption">
+Figure 5.3: Phylogenetic Analysis Step
+</p>
+</div>
+<p>For local sequence analysis, first of all, sequence alignment and cropping is carried out. MiSMui provides two mainstream alignment software, <em>Mafft</em> and <em>Muscle</em>, to align the sequence <em>(Mafft is faster)</em>, and <em>Trimal</em> software to crop the aligned sequence files, so that more accurate results can be obtained.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-4"></span>
+<img src="figure/Phyligenetic_2.jpg" alt="Alignment Soft Select" width="50%" />
+<p class="caption">
+Figure 5.4: Alignment Soft Select
+</p>
+</div>
+<p>At the same time, MiSMui provides a variety of tree-building algorithms, including using <em>Fasttree</em> software to build ML (Maximum Likelihood method), using R packet <em>phangorn</em> to build NJ (Neighbor-joining) and UPGMA（Unweighted Pair Group Method With Arithmetic Means）based on sequence genetic distance.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-5"></span>
+<img src="figure/Phyligenetic_3.jpg" alt="Tree Function Type" width="50%" />
+<p class="caption">
+Figure 5.5: Tree Function Type
+</p>
+</div>
+<p>After setting the parameters, the system evolution tree can be built through the <strong>‘Make Tree Data’</strong> button. After successful construction, the evolution tree data will be displayed in the <strong>‘Data Display’</strong> module, which contains branch nodes, end nodes and other information.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-6"></span>
+<img src="figure/Phyligenetic_4.jpg" alt="Tree Data Display " width="100%" />
+<p class="caption">
+Figure 5.6: Tree Data Display
+</p>
+</div>
+</div>
+<div id="visual-display" class="section level4 hasAnchor" number="5.2.1.2">
+<h4><span class="header-section-number">5.2.1.2</span> Visual Display<a href="phylogenetic-tree.html#visual-display" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-7"></span>
+<img src="figure/Phyligenetic_7.jpg" alt="Phylogenetic Visual Step" width="100%" />
+<p class="caption">
+Figure 5.7: Phylogenetic Visual Step
+</p>
+</div>
+<p>Next, the user can choose the visual type. MiSMui provides more than ten types of drawing methods such as ‘fan’ , ‘circle’ and ‘rectangular’. It is recommended to choose the mainstream drawing type of ‘rectangular’ or ‘fan’.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-8"></span>
+<img src="figure/Phyligenetic_5.jpg" alt="Tree Layout Type" width="50%" />
+<p class="caption">
+Figure 5.8: Tree Layout Type
+</p>
+</div>
+<p>In addition, users can click the <strong>“Set Additionl Parameters”</strong> button to set the parameters of the evolution tree, including the basic parameter setting and the expansion parameter setting. Through the basic parameter setting, the user can set the size, location and thickness of the evolution tree. Through the expansion parameter setting, the user can choose the root of the evolution tree according to the node number of the tree, and set the highlighted nodes and area.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-9"></span>
+<img src="figure/Phyligenetic_6.jpg" alt="Set Tree Parameters" width="80%" />
+<p class="caption">
+Figure 5.9: Set Tree Parameters
+</p>
+</div>
+<p>After setting the parameters, click the <strong>“Make Tree Plot”</strong> button for visualization, and you can set the size of the drawing board through the Set Plot Size button on the right. At the same time, MiSMui provides download controls for high-quality pictures, and users can use the button in the upper right corner of the drawing board to download.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-10"></span>
+<img src="figure/Phyligenetic_plot.jpg" alt="Phylogenetic Tree Display" width="100%" />
+<p class="caption">
+Figure 5.10: Phylogenetic Tree Display
+</p>
+</div>
+</div>
+</div>
+<div id="local-tree-data-analysis" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Local Tree Data Analysis<a href="phylogenetic-tree.html#local-tree-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>MiSMui can also visually analyze the tree data that has been build. First, select the data source as’ Personal_Tree_Data_Analysis’, then select the data to upload, and then click the ‘Make Tree Data’ button to read the tree file. MiSMui supports tree file types with multiple suffixes (‘.nwk’, ‘. newick’)</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-11"></span>
+<img src="figure/Phyligenetic_tree_analysis.jpg" alt="Phylogenetic Analysis Step" width="100%" />
+<p class="caption">
+Figure 5.11: Phylogenetic Analysis Step
+</p>
+</div>
+<p>Then select the display type through ‘Select Tree Layout’ and highlight the branch of the evolutionary tree you are interested in through the ‘Set Addition Parameters’ parameter setting section.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-12"></span>
+<img src="figure/Phyligenetic_tree_set.jpg" alt="Set Tree Parameters" width="80%" />
+<p class="caption">
+Figure 5.12: Set Tree Parameters
+</p>
+</div>
+<p>After setting the parameters, click ‘Make Tree Plot’ for visualization.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-13"></span>
+<img src="figure/Phyligenetic_tree_plot.jpg" alt="Phylogenetic Tree Display" width="100%" />
+<p class="caption">
+Figure 5.13: Phylogenetic Tree Display
+</p>
+</div>
+</div>
+<div id="hmm-search-filter-data-analysis" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> HMM Search Filter Data Analysis<a href="phylogenetic-tree.html#hmm-search-filter-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>under construction…</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="blast-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="antismash-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-Phylogenetic.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
